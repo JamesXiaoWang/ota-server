@@ -1,0 +1,15 @@
+{
+    "x": [
+        "2019-08-02",
+        "2019-08-03",
+        "2019-08-04",
+        "2019-08-05",
+        "2019-08-06",
+        "2019-08-07",
+        "2019-08-08"
+    ],
+    "y": "[{name:\"Q6105_V1.22\",data:[16,13,15,13,16,10,11]},{name:\"Q6105_V1.23\",data:[0,1,1,1,0,0,0]},{name:\"Q6105_V1.15\",data:[0,0,0,1,0,0,0]},{name:\"Q6102_V1.3.12\",data:[0,0,0,0,1,1,0]},{name:\"Q6105_V1.20\",data:[0,0,0,0,1,0,3]},{name:\"Q6101_V3.0_KEY_V2.0\",data:[0,0,0,0,0,0,1]},{name:\"Q6102_V1.3.5\",data:[0,0,0,0,0,0,1]},{name:\"Q6102_V1.3.9\",data:[0,0,0,0,0,0,2]},{name:\"Q6101_V1.1\",data:[0,0,0,0,0,0,0]},{name:\"Q6101_V3.0\",data:[0,0,0,0,0,0,0]},{name:\"Q6102_SITUO_DEBUG_V1.0\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.0\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.3\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.3.1\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.3.2\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.3.4\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6103_V1.0\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.0\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.10\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.11\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.12\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.3\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.4\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.5\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.6\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.8\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.9\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6106_V1.1\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6106_V1.3\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.2\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.3.10\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.3.11\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.3.3\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.3.6\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.3.7\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.3.8\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6102_V1.5\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.1\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.13\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.139\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.14\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.159\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.16\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.17\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.18\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.19\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.20.9\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.21\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.2_IFLY\",data:[0,0,0,0,0,0,0],visible:false},{name:\"Q6105_V1.7\",data:[0,0,0,0,0,0,0],visible:false}]",
+    "identification": "",
+    "table": null,
+    "page_result": false
+}

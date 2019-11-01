@@ -1,0 +1,61 @@
+{
+  "x": [
+    "2019-08-29",
+    "2019-08-30",
+    "2019-08-31",
+    "2019-09-01",
+    "2019-09-02",
+    "2019-09-03",
+    "2019-09-04"
+  ],
+  "y": "[{name:\"CSZJ(Q6105)\",data:[14,18,19,16,13,0,0]},{name:\"CSZJ(Q6102)\",data:[0,0,1,0,2,0,0]},{name:\"BroadMobi(BM817C)\",data:[0,0,0,0,0,0,0]},{name:\"CSZJ(Q6101)\",data:[0,0,0,0,0,0,0]},{name:\"CSZJ(Q6106)\",data:[0,0,0,0,0,0,0]}]",
+  "identification": null,
+  "table": [
+    {
+      "brand": "BroadMobi",
+      "model": "BM817C",
+      "version": null,
+      "total": "1",
+      "count": "0",
+      "new": "0",
+      "percentage": "-"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": null,
+      "total": "128",
+      "count": "0",
+      "new": "0",
+      "percentage": "-"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6102",
+      "version": null,
+      "total": "634",
+      "count": "0",
+      "new": "0",
+      "percentage": "-"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6105",
+      "version": null,
+      "total": "6398",
+      "count": "0",
+      "new": "0",
+      "percentage": "-"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6106",
+      "version": null,
+      "total": "2",
+      "count": "0",
+      "new": "0",
+      "percentage": "-"
+    }
+  ],
+  "page_result": false
+}

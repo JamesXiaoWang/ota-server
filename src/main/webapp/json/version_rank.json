@@ -1,0 +1,128 @@
+{
+  "x": "[\"Q6102_V1.0\",\"Q6101_V3.0_KEY_V2.0\",\"Q6105_V1.0\",\"Q6103_V1.0\",\"Q6106_V1.1\",\"Q6101_V1.1\",\"Q6102_V1.3.5\",\"Q6101_V3.0\",\"Q6102_V1.3\",\"Q6105_V1.8\",\"Q6105_V1.12\",\"Q6105_V1.9\"]",
+  "y": "[49,43,12,7,5,3,3,2,1,1,1,1]",
+  "chart": "[[\"Q6102_V1.0\",49],[\"Q6101_V3.0_KEY_V2.0\",43],[\"Q6105_V1.0\",12],[\"Q6103_V1.0\",7],[\"Q6106_V1.1\",5],[\"Q6101_V1.1\",3],[\"Q6102_V1.3.5\",3],[\"Q6101_V3.0\",2],[\"Q6102_V1.3\",1],[\"Q6105_V1.8\",1],[\"Q6105_V1.12\",1],[\"Q6105_V1.9\",1]]",
+  "table": [
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6102_V1.0",
+      "total": "49",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "38.28125%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6101_V3.0_KEY_V2.0",
+      "total": "43",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "33.59375%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6105_V1.0",
+      "total": "12",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "9.375%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6103_V1.0",
+      "total": "7",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "5.46875%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6106_V1.1",
+      "total": "5",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "3.90625%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6101_V1.1",
+      "total": "3",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "2.34375%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6102_V1.3.5",
+      "total": "3",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "2.34375%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6101_V3.0",
+      "total": "2",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "1.5625%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6102_V1.3",
+      "total": "1",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "0.78125%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6105_V1.8",
+      "total": "1",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "0.78125%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6105_V1.12",
+      "total": "1",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "0.78125%"
+    },
+    {
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": "Q6105_V1.9",
+      "total": "1",
+      "count": "0",
+      "new": "0",
+      "total3": "128",
+      "total_percentage": "0.78125%"
+    }
+  ],
+  "page_result": false
+}

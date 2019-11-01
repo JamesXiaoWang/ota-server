@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.otaserver.ota_project.device.mapper.DeviceNumberMapper">
+    <resultMap id="BASEResultMap" type="com.otaserver.ota_project.device.entity.DeviceNumber">
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="imeiNumber" property="imeiNumber" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="queryDeviceNumberAll"  resultMap="BASEResultMap">
+        select * from tb_imei_info
+    </select>
+
+    <select id="getCount" resultType="java.lang.Integer">
+        select COUNT(*) from tb_imei_info
+    </select>
+
+    <select id="queryDeviceNumberInfoByPages"  resultMap="BASEResultMap">
+        select * from tb_imei_info
+    </select>
+
+    <select id="queryDeviceNumberByParams"  resultMap="BASEResultMap">
+        select * from tb_imei_info where imeiNumber = #{imeiNumber}
+    </select>
+
+    <update id="updateDeviceNumber" parameterType="com.otaserver.ota_project.device.entity.DeviceNumber">
+        update tb_imei_info set imeiNumber = #{imeiNumber} where id = #{id}
+    </update>
+
+    <insert id="insertDeviceNumber" parameterType="com.otaserver.ota_project.device.entity.DeviceNumber">
+        INSERT into tb_imei_info(`imeiNumber`) VALUES(#{imeiNumber})
+    </insert>
+
+    <delete id="deleteDeviceNumber" parameterType="java.lang.String">
+        delete from tb_imei_info where id = #{id}
+    </delete>
+</mapper>

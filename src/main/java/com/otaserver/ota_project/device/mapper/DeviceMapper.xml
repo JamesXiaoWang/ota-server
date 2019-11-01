@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.otaserver.ota_project.device.mapper.DeviceMapper">
+    <resultMap id="BaseResultMap" type="com.otaserver.ota_project.device.entity.Device">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="projectId" property="projectId" jdbcType="INTEGER"/>
+        <result column="clientId" property="clientId" jdbcType="VARCHAR"/>
+        <result column="apiKey" property="apiKey" jdbcType="VARCHAR"/>
+        <result column="deviceId" property="deviceId" jdbcType="VARCHAR"/>
+        <result column="version" property="version" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="dvtype" property="dvtype" jdbcType="VARCHAR"/>
+        <result column="isCheck" property="isCheck" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="queryDailyLivingCapacityByVersion" resultType="java.lang.Integer">
+        select count(1) from tb_device_records where date(lastLoginTime) = curdate() - #{day_count} and version =  #{version}
+    </select>
+
+    <select id="queryNewIncrementsByVersion" resultType="java.lang.Integer">
+        select count(1) from tb_device_records where date(lastLoginTime) = curdate() - #{day_count}
+		  and remark = '已激活' and version =  #{version}
+    </select>
+
+    <select id="queryDeviceAccumulation" resultType="java.lang.Integer">
+        select count(1) from tb_device_records where date(lastLoginTime) = curdate() - #{day_count}
+    </select>
+    <!--获取设备的项目id和客户id-->
+    <select id="getDeviceModelAndClientId" resultMap="BaseResultMap">
+        select clientId,projectId,version from tb_device  GROUP BY clientId,projectId,version
+    </select>
+    <!--获取下拉框的值-->
+    <select id="selectDeviceVersionList" resultMap="BaseResultMap">
+        SELECT a.version,b.clientId,b.projectId FROM	tb_device_records as a
+        INNER JOIN tb_device_equipment_filing as b where a.efId = b.id
+		GROUP BY a.version
+    </select>
+    <!--获取版本明细数据-->
+    <select id="queryVersionDetails" resultMap="BaseResultMap">
+        SELECT DATE_FORMAT(lastLoginTime, '%Y-%m-%d' ) days,a.version,b.clientId,b.projectId,
+        COUNT(DISTINCT(a.deviceId)) count
+        FROM( SELECT * FROM tb_device_records
+        WHERE DATE_SUB( CURDATE( ), INTERVAL #{day_count} DAY )  <![CDATA[ <= ]]>   date(lastLoginTime) ) as a
+        INNER JOIN tb_device_equipment_filing as b on b.id = a.efId
+        where a.version = #{version} and b.clientId = #{clientId} and projectId = #{projectId}
+        GROUP BY days;
+    </select>
+    <!--获取累计量占比，version_rank -->
+    <select id="queryVersionRank" resultMap="BaseResultMap">
+       SELECT a.version,b.clientId,b.projectId,a.lastLoginTime,
+        COUNT(DISTINCT(a.deviceId)) count
+        FROM tb_device_records as a
+        INNER JOIN tb_device_equipment_filing as b on b.id = a.efId
+        where b.clientId = #{clientId} and a.version like #{version} and b.projectId = #{projectId}
+	    GROUP BY a.version ORDER BY count DESC
+    </select>
+    <!--获取版本日活量-->
+    <select id="queryDailyLivingCapacity" resultMap="BaseResultMap">
+        SELECT DATE_FORMAT(lastLoginTime, '%Y-%m-%d' ) days,a.version,b.clientId,b.projectId,
+        COUNT(DISTINCT(a.deviceId)) count
+        FROM	( SELECT * FROM tb_device_records
+        WHERE DATE_SUB( CURDATE( ), INTERVAL #{day_count} DAY ) <![CDATA[ <= ]]>  date(lastLoginTime) ) as a
+        INNER JOIN tb_device_equipment_filing as b on b.id = a.efId
+        where a.version like  #{version} and b.clientId = #{clientId} and projectId = #{projectId}
+        GROUP BY days;
+    </select>
+    <!--获取版本总数-->
+    <select id="getVersionTotal" resultType="java.lang.Integer">
+        SELECT SUM(num) as count FROM
+        (select COUNT(DISTINCT(deviceId)) as num from tb_device_records
+        where version like #{version} GROUP BY version) as a
+    </select>
+    <!--版本概括-->
+    <select id="versionSummaryList" resultMap="BaseResultMap">
+        SELECT a.version,b.clientId,b.projectId,
+        COUNT(DISTINCT(a.deviceId)) count
+        FROM	tb_device_records as a
+        INNER JOIN tb_device_equipment_filing as b on b.id = a.efId
+        where b.clientId = #{clientId} and a.version like #{version} and b.projectId = #{projectId}
+		GROUP BY a.version
+    </select>
+    <!--新增量-->
+    <select id="queryDeviceNewIncrements" resultMap="BaseResultMap">
+        SELECT distinct a.version,DATE_FORMAT(lastLoginTime, '%Y-%m-%d' ) days,b.projectId,b.clientId,COUNT(distinct(a.deviceId)) as count FROM
+        ( SELECT * FROM tb_device_records
+        WHERE DATE_SUB(CURDATE(), INTERVAL #{day_count} DAY )  <![CDATA[ <= ]]>   date(lastLoginTime) and remark = '已激活') as a
+        INNER JOIN tb_device_equipment_filing as b on b.id = a.efId
+        where b.projectId = #{projectId} and b.clientId = #{clientId} and a.version like  #{version}
+        GROUP BY days
+    </select>
+    <!--按天数查询新增量，周-->
+    <select id="queryDeviceNewIncrementsByWeek" resultMap="BaseResultMap">
+        SELECT  DATE_FORMAT(lastLoginTime, '%Y-%m-%d' ) weeks,a.version, COUNT(DISTINCT(a.deviceId)) count
+        FROM( SELECT * FROM tb_device_records
+        WHERE DATE_SUB( CURDATE( ), INTERVAL #{day_count} DAY )  <![CDATA[ <= ]]>   date(lastLoginTime) and remark = '已激活' ) as a
+        INNER JOIN tb_device_equipment_filing as b on b.id = a.efId
+        where projectId = #{projectId} and b.clientId = #{clientId} and a.version like #{version}
+        GROUP BY weeks
+        HAVING weeks IN (
+        SELECT DATE_FORMAT((SELECT DATE_ADD(lastLoginTime,INTERVAL - WEEKDAY(lastLoginTime) DAY)),'%Y-%m-%d') AS dateFormat
+        FROM tb_device_records
+        WHERE DATE_SUB(CURDATE(),INTERVAL #{day_count} DAY)  <![CDATA[ <= ]]> date(lastLoginTime)
+        )
+    </select>
+    <!--按天数查询新增量，月-->
+    <select id="queryDeviceNewIncrementsByMonth" resultMap="BaseResultMap">
+        SELECT distinct a.version,b.projectId,b.clientId,COUNT(DISTINCT(a.deviceId)) as count,DATE_FORMAT(lastLoginTime,'%Y-%m') months FROM
+        (SELECT * FROM tb_device_records
+        WHERE DATE_SUB( CURDATE( ), INTERVAL #{day_count} DAY )  <![CDATA[ <= ]]>  date(lastLoginTime) and remark = '已激活') as a
+        INNER JOIN tb_device_equipment_filing as b on b.id = a.efId where b.projectId = #{projectId} and b.clientId = #{clientId} and a.version like #{version}
+        GROUP BY months
+    </select>
+    <!--按天数查询累计量，日-->
+    <select id="queryDeviceAccumulationByDays" resultMap="BaseResultMap">
+        SELECT
+        DATE_FORMAT(lastLoginTime, '%Y-%m-%d' ) days,a.version,b.projectId,b.clientId,COUNT(distinct(a.deviceId)) as count
+        FROM( SELECT * FROM tb_device_records
+        WHERE DATE_SUB( CURDATE( ), INTERVAL #{day_count} DAY )  <![CDATA[ <= ]]>  date(lastLoginTime) ) as a
+        INNER JOIN tb_device_equipment_filing as b on b.id = a.efId where b.projectId = #{projectId} and b.clientId = #{clientId} and a.version like #{version}
+        GROUP BY days;
+    </select>
+    <!--按天数查询累计量，周-->
+    <select id="queryDeviceAccumulationByWeek" resultMap="BaseResultMap">
+        SELECT  DATE_FORMAT(lastLoginTime, '%Y-%m-%d' ) weeks,a.version, COUNT(DISTINCT(a.deviceId)) count
+        FROM	( SELECT * FROM tb_device_records
+        WHERE DATE_SUB( CURDATE( ), INTERVAL #{day_count} DAY )  <![CDATA[ <= ]]> date(lastLoginTime)) as a
+        INNER JOIN tb_device_equipment_filing as b on b.id = a.efId where projectId = #{projectId} and b.clientId = #{clientId} and a.version like #{version}
+        GROUP BY weeks
+        HAVING weeks IN (
+        SELECT DATE_FORMAT((SELECT DATE_ADD(lastLoginTime,INTERVAL - WEEKDAY(lastLoginTime) DAY)),'%Y-%m-%d') AS dateFormat
+        FROM tb_device_records
+        WHERE DATE_SUB(CURDATE(),INTERVAL #{day_count} DAY)  <![CDATA[ <= ]]> date(lastLoginTime)
+        )
+    </select>
+    <!--按天数查询累计量，月-->
+    <select id="queryDeviceAccumulationByMonth" resultMap="BaseResultMap">
+        SELECT distinct a.version,b.projectId,b.clientId,COUNT(DISTINCT(a.deviceId)) as count,DATE_FORMAT(lastLoginTime,'%Y-%m') months FROM
+        (SELECT * FROM tb_device_records
+        WHERE DATE_SUB( CURDATE( ), INTERVAL #{day_count} DAY )   <![CDATA[ <= ]]>  date(lastLoginTime)) as a
+        INNER JOIN tb_device_equipment_filing as b on b.id = a.efId where b.projectId = #{projectId} and b.clientId = #{clientId} and a.version like #{version}
+        GROUP BY months
+    </select>
+</mapper>

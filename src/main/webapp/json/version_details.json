@@ -1,0 +1,79 @@
+{
+  "x": [
+    "2019-08-26",
+    "2019-08-27",
+    "2019-08-28",
+    "2019-08-29",
+    "2019-08-30",
+    "2019-08-31",
+    "2019-09-01"
+  ],
+  "y": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "table": [
+    {
+      "target_date": "2019-09-01",
+      "active": "0",
+      "new": "0",
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": null
+    },
+    {
+      "target_date": "2019-08-31",
+      "active": "0",
+      "new": "0",
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": null
+    },
+    {
+      "target_date": "2019-08-30",
+      "active": "0",
+      "new": "0",
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": null
+    },
+    {
+      "target_date": "2019-08-29",
+      "active": "0",
+      "new": "0",
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": null
+    },
+    {
+      "target_date": "2019-08-28",
+      "active": "0",
+      "new": "0",
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": null
+    },
+    {
+      "target_date": "2019-08-27",
+      "active": "0",
+      "new": "0",
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": null
+    },
+    {
+      "target_date": "2019-08-26",
+      "active": "0",
+      "new": "0",
+      "brand": "CSZJ",
+      "model": "Q6101",
+      "version": null
+    }
+  ],
+  "page_result": false
+}

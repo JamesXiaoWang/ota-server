@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.otaserver.ota_project.device.mapper.DeviceNumberBindMapper">
+    <resultMap id="BASEResultMap" type="com.otaserver.ota_project.device.entity.DeviceNumberBind">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="deviceId" property="deviceId" jdbcType="VARCHAR"/>
+        <result column="imeiNumber" property="imeiNumber" jdbcType="VARCHAR"/>
+        <result column="isBind" property="isBind" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <select id="queryAllDeviceBindInfo" resultMap="BASEResultMap">
+        select id,deviceId,imeiNumber,isBind,bindDateTime as date from tb_device_imei_bind where isBind = 1 ORDER BY bindDateTime DESC
+    </select>
+
+    <select id="getDeviceBindInfoCount" resultType="java.lang.Integer">
+         select count(*) from tb_device_imei_bind where isBind = 1
+    </select>
+
+    <select id="queryDeviceBindInfo" resultMap="BASEResultMap">
+        select id,deviceId,imeiNumber,isBind,bindDateTime from tb_device_imei_bind where deviceId = #{deviceId}
+    </select>
+
+    <insert id="deviceBindByImeiNumber" parameterType="com.otaserver.ota_project.device.entity.DeviceNumberBind">
+        INSERT into tb_device_imei_bind(`deviceId`,`imeiNumber`) VALUES(#{deviceId},#{imeiNumber})
+    </insert>
+
+    <update id="updateDeviceBindInfo" parameterType="com.otaserver.ota_project.device.entity.DeviceNumberBind">
+        update tb_device_imei_bind set imeiNumber = #{imeiNumber} where deviceId = #{deviceId}
+    </update>
+
+    <select id="queryDeviceBindInfoByParams" resultMap="BASEResultMap">
+        select id,deviceId,imeiNumber,isBind,bindDateTime as date from tb_device_imei_bind where imeiNumber = #{imeiNumber}
+    </select>
+
+    <update id="updateDeviceBindStatus" parameterType="java.lang.String">
+        update tb_device_imei_bind set isBind = 0 where id = #{id}
+    </update>
+</mapper>
