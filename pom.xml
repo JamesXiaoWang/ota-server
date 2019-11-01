@@ -206,7 +206,7 @@
         <dependency>
             <groupId>com.github.junrar</groupId>
             <artifactId>junrar</artifactId>
-            <version>0.7</version>
+            <version>1.0.1</version>
         </dependency>
 
         <!-- 解压缩ZIP文件 支持 -->
